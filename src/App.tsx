@@ -4,7 +4,7 @@ import type { MenuProps } from 'antd';
 import { LaptopOutlined, NotificationOutlined, UserOutlined } from '@ant-design/icons';
 import 'antd/dist/reset.css';
 import s from './App.module.css';
-import * as medicine from './medicine';
+import medicine from './medicine';
 import type { ColorMap } from './medicine/common';
 import { colorMap } from './medicine/common';
 import cx from 'classnames';
@@ -109,8 +109,8 @@ const App: React.FC = () => {
                 key={index}
                 title={item.name}
                 style={{ width: 300 }}
-                extra={item.taste.map((data: ColorMap) => <Tag color={colorMap[data]}>{data}</Tag>)}
-                cover={item.images.map(data => <img alt="草药图" src={data}></img>) }
+                extra={item.taste.map((data: ColorMap, index: number) => <Tag key={index} color={colorMap[data]}>{data}</Tag>)}
+                cover={item.images.map((data: string, index: number) => <img key={index} alt="草药图" src={data}></img>) }
                 >
                   <Card.Meta
                     description={`性味：${item.chillsOrfever}`}

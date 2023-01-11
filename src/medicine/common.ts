@@ -15,5 +15,6 @@ export interface MedicineType {
 	taboo: string;
 	images: string[];
 	appendix: string;
+	dosage: string;
 	content: () => JSX.Element;
 }

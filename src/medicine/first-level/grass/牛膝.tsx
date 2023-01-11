@@ -1,5 +1,5 @@
-import huaiNiuXi from "../images/怀牛膝.jpeg";
-import { MedicineType } from './common';
+import huaiNiuXi from "../../../images/怀牛膝.jpeg";
+import { MedicineType } from '../../common';
 
 const medicineData: MedicineType = {
 	name: "牛膝",
@@ -7,6 +7,7 @@ const medicineData: MedicineType = {
 	chillsOrfever: "性平",
 	originPlace: "河南，四川。为山野自生之多年生草本，根入药",
 	taboo: "孕妇忌用",
+	dosage: "普通钱半至三钱",
 	images: [huaiNiuXi],
 	appendix: "杜牛膝--性专走下，毫无补益，散淤血破子宫肿瘤，止痛可用",
 	content: () => {

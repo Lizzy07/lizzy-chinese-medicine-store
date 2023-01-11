@@ -1,5 +1,5 @@
-import pic1 from "../images/益母草.png";
-import { MedicineType } from './common';
+import pic1 from "../../../images/益母草.png";
+import { MedicineType } from '../../common';
 
 const medicineData: MedicineType = {
 	name: "益母草/充蔚子",
@@ -9,6 +9,7 @@ const medicineData: MedicineType = {
 	taboo: "孕妇忌用",
 	images: [pic1],
 	appendix: "",
+	dosage: "普通一钱至三钱",
 	content: () => {
 		return (<div>主治：明目，去淤，通调月经</div>)
 	},
