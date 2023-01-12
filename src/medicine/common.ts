@@ -5,6 +5,7 @@ export const colorMap = {
   "辛": "",
   "咸": "balck",
   "淡": "purple",
+	"涩": "orange"
 }
 export type ColorMap =  keyof typeof colorMap;
 export interface MedicineType {
