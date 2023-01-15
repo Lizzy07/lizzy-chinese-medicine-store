@@ -2,7 +2,7 @@ import pic1 from "../../../images/蒲黄.jpeg";
 import { MedicineType } from '../../common';
 
 const medicineData: MedicineType = {
-	name: "蒲黄",
+	name: "蒲黄粉",
 	taste: ["甘", "辛"],
 	chillsOrfever: "性温",
 	originPlace: "蒲黄乃蒲黄花之花粉，入药",

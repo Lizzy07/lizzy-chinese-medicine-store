@@ -1,13 +1,13 @@
 import React from 'react';
 import { Descriptions, Card, Tag, Layout, Breadcrumb, Menu, theme } from 'antd';
 import type { MenuProps } from 'antd';
-import { LaptopOutlined, NotificationOutlined, UserOutlined } from '@ant-design/icons';
 import 'antd/dist/reset.css';
+import cx from 'classnames';
 import s from './App.module.css';
-import medicine from './medicine';
+import { grassModules } from './medicine';
 import type { ColorMap } from './medicine/common';
 import { colorMap } from './medicine/common';
-import cx from 'classnames';
+import SiderBar from "./components/SiderBar"
 
 const { Header, Content, Sider } = Layout;
 
@@ -22,54 +22,13 @@ const items1: MenuProps['items'] = [{
   label: '黄帝内经',
 }];
 
-const items2: MenuProps['items'] = [{
-  key: `sub1`,
-  icon: React.createElement(UserOutlined),
-  label: '上品药',
-
-  children: [
-    {
-      key: '1-1',
-      label: `玉石`,
-    },
-    {
-      key: '1-2',
-      label: `草`,
-    },
-    {
-      key: '1-3',
-      label: `木`,
-    }
-  ],
-}, {
-  key: `sub2`,
-  icon: React.createElement(LaptopOutlined),
-  label: `subnav 2`,
-
-  children: [
-    {
-      key: '2-1',
-      label: `option 2-1`,
-    }
-  ]
-}, {
-  key: `sub3`,
-  icon: React.createElement(NotificationOutlined),
-  label: `subnav 3`,
-
-  children: [
-    {
-      key: '3-1',
-      label: `option 3-1`,
-    }
-  ]
-}];
-
 const App: React.FC = () => {
   const {
     token: { colorBgContainer },
   } = theme.useToken();
+  const onSelectMenu= (item: Record<string, any>, key: string) => {
 
+  }
   return (
     <Layout>
       <Header className="header">
@@ -78,13 +37,9 @@ const App: React.FC = () => {
       </Header>
       <Layout>
         <Sider width={200} style={{ background: colorBgContainer }}>
-          <Menu
-            mode="inline"
-            defaultSelectedKeys={['1']}
-            defaultOpenKeys={['sub1']}
-            style={{ height: '100%', borderRight: 0 }}
-            items={items2}
-          />
+          <SiderBar
+          onSelectMenu={onSelectMenu}
+          ></SiderBar>
         </Sider>
         <Layout style={{ padding: '0 24px 24px' }}>
           <Breadcrumb style={{ margin: '16px 0' }}>
@@ -104,7 +59,7 @@ const App: React.FC = () => {
             }}
           >
             {
-              Object.values(medicine).map((item, index) => {
+              Object.values(grassModules).map((item, index) => {
                 return <Card
                 key={index}
                 title={item.name}
