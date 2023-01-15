@@ -1,13 +1,11 @@
-import React from 'react';
-import { Descriptions, Card, Tag, Layout, Breadcrumb, Menu, theme } from 'antd';
+import React, { useState } from 'react';
+import { Layout, Breadcrumb, Menu, theme } from 'antd';
 import type { MenuProps } from 'antd';
 import 'antd/dist/reset.css';
 import cx from 'classnames';
 import s from './App.module.css';
-import { grassModules } from './medicine';
-import type { ColorMap } from './medicine/common';
-import { colorMap } from './medicine/common';
-import SiderBar from "./components/SiderBar"
+import SiderBar from "./components/SiderBar";
+import MedicineContent from "./components/MedicineContent";
 
 const { Header, Content, Sider } = Layout;
 
@@ -26,8 +24,9 @@ const App: React.FC = () => {
   const {
     token: { colorBgContainer },
   } = theme.useToken();
+  const [selectKey, SetSelectKey] = useState('1-2')
   const onSelectMenu= (item: Record<string, any>, key: string) => {
-
+    SetSelectKey(key)
   }
   return (
     <Layout>
@@ -38,7 +37,8 @@ const App: React.FC = () => {
       <Layout>
         <Sider width={200} style={{ background: colorBgContainer }}>
           <SiderBar
-          onSelectMenu={onSelectMenu}
+            selectKey={selectKey}
+            onSelectMenu={onSelectMenu}
           ></SiderBar>
         </Sider>
         <Layout style={{ padding: '0 24px 24px' }}>
@@ -58,33 +58,9 @@ const App: React.FC = () => {
               background: colorBgContainer,
             }}
           >
-            {
-              Object.values(grassModules).map((item, index) => {
-                return <Card
-                key={index}
-                title={item.name}
-                style={{ width: 300 }}
-                extra={item.taste.map((data: ColorMap, index: number) => <Tag key={index} color={colorMap[data]}>{data}</Tag>)}
-                cover={item.images.map((data: string, index: number) => <img key={index} alt="草药图" src={data}></img>) }
-                >
-                  <Card.Meta
-                    description={`性味：${item.chillsOrfever}`}
-                  ></Card.Meta>
-                  {
-                    item.content()
-                  }
-                  <Descriptions
-                    // bordered
-                    size="small"
-                    column={1}
-                  >
-                    <Descriptions.Item label="产地">{item.originPlace}</Descriptions.Item>
-                    <Descriptions.Item label="禁忌">{item.taboo}</Descriptions.Item>
-                    <Descriptions.Item label="附录">{item.appendix}</Descriptions.Item>
-                  </Descriptions>
-                </Card>
-              })
-            }
+            <MedicineContent
+              selectKey={selectKey}
+            ></MedicineContent>
           </Content>
         </Layout>
       </Layout>

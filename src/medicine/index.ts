@@ -1,5 +1,7 @@
 const grassModuleFiles = require.context('./first-level/grass', true, /\.tsx$/);
+const woodModuleFiles = require.context('./first-level/wood', true, /\.tsx$/);
 const grassModules = getModules(grassModuleFiles);
+const woodModules = getModules(woodModuleFiles);
 function getModules(moduleFiles: any): Record<string, any> {
   const modules = moduleFiles.keys().reduce((modules: Record<string, any>, modulePath: string) =>
   {
@@ -13,5 +15,6 @@ function getModules(moduleFiles: any): Record<string, any> {
   return modules
 }
 export {
-  grassModules
+  grassModules,
+  woodModules
 };

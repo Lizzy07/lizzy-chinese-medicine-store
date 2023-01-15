@@ -6,7 +6,6 @@ const items2: MenuProps['items'] = [{
   key: `sub1`,
   icon: React.createElement(UserOutlined),
   label: '上品药',
-
   children: [
     {
       key: '1-1',
@@ -46,6 +45,7 @@ const items2: MenuProps['items'] = [{
 }];
 interface SiderBarProps {
   onSelectMenu: (item: Record<string, any>, key: string) => void;
+  selectKey: string;
 }
 const SiderBar = (props: SiderBarProps) => {
   const onSelectMenu= ({ item, key, keyPath, domEvent }: any) => {
@@ -53,7 +53,7 @@ const SiderBar = (props: SiderBarProps) => {
   }
   return (<Menu
     mode="inline"
-    defaultSelectedKeys={['1']}
+    defaultSelectedKeys={[props.selectKey]}
     defaultOpenKeys={['sub1']}
     style={{ height: '100%', borderRight: 0 }}
     items={items2}
