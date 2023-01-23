@@ -8,6 +8,7 @@ const keyModulesMap = {
   "1-2": grassModules,
   "1-3": woodModules
 } as Record<string, any>
+
 interface MedicineContentProps{
   selectKey: string
 }
