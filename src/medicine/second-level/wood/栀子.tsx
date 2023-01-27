@@ -1,17 +1,17 @@
-import pic1 from "../../../images/苦参.jpeg";
+import pic1 from "../../../images/栀子.jpg";
 import { MedicineType } from '../../common';
 
 const medicineData: MedicineType = {
-	name: "苦参",
+	name: "栀子",
 	taste: ["苦"],
 	chillsOrfever: "性寒",
-	originPlace: "河南四川",
+	originPlace: "四川尤多产",
 	taboo: "",
 	images: [pic1],
 	dosage: '',
 	appendix: "",
 	content: () => {
-		return (<div>主治：燥湿胜热健胃杀虫要药。</div>)
+		return (<div>主治：泻火要药，心烦。旁治发黄。</div>)
 	},
 };
 
